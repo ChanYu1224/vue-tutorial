@@ -48,7 +48,7 @@ export default new Vuex.Store({
         password:authData.password,
         returnSecureToken:true
       }
-      axiosAuth.post('/accounts:signInWithPassword?key=AIzaSyBdhyK4SFPKYaUNlDgyXik1IKgJD7DpZ5A',request)
+      axiosAuth.post('/accounts:<key>',request)
       .then(response => {
         dispatch('setAuthData', {
           idToken: response.data.idToken,
@@ -65,7 +65,7 @@ export default new Vuex.Store({
         grant_type: 'refresh_token',
         refresh_token: refreshToken,
       }
-      await axiosRefresh.post('/token?key=AIzaSyBdhyK4SFPKYaUNlDgyXik1IKgJD7DpZ5A', request)
+      await axiosRefresh.post('/token?key=<key>', request)
       .then(response => {
         dispatch('setAuthData', {
           idToken: response.data.id_token,
@@ -83,7 +83,7 @@ export default new Vuex.Store({
         password: authData.password,
         returnSecureToken: true,
       }
-      axiosAuth.post('/accounts:signUp?key=AIzaSyBdhyK4SFPKYaUNlDgyXik1IKgJD7DpZ5A', request)
+      axiosAuth.post('/accounts:signUp?key=<key>', request)
       .then(response => {
         dispatch('setAuthData', {
           idToken: response.data.idToken,
